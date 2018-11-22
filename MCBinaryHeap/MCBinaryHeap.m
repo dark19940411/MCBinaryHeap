@@ -64,6 +64,9 @@ static void heap_apply(const void *val, void *context) {
 - (instancetype)initWithHeap:(MCBinaryHeap *)heap {
 	self = [super init];
 	if (self) {
+        if (_heap) {
+            CFRelease(_heap);
+        }
 		_heap = CFBinaryHeapCreateCopy(kCFAllocatorDefault, 0, heap->_heap);
 	}
 	return self;
